@@ -21,7 +21,11 @@ jQuery(document).ready(function () {
     jQuery('#map').vectorMap({ //Initialize JQVMap
         map: 'usa_en',
         onRegionClick: function (event, code, region) {
-            window.open("https://my.usfirst.org/myarea/index.lasso?page=searchresults&programs=FRC&reports=teams&sort_teams=number&results_size=250&omit_searchform=1&season_FRC=2016&area=" + code.toUpperCase() + "-USA", "_blank");
+            var width = $(window).width();
+            if (width > 768) {
+              window.open("https://my.usfirst.org/myarea/index.lasso?page=searchresults&programs=FRC&reports=teams&sort_teams=number&results_size=250&omit_searchform=1&season_FRC=2016&area=" + code.toUpperCase() + "-USA", "_blank");  
+            }
+            
         },
         enableZoom: false,
         showTooltip: true,
