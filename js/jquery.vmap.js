@@ -164,7 +164,10 @@
                     map.highlight(code, containerPath);
                 }
                 if (params.showTooltip) {
-                    map.label.html("<strong style='font-size: 14px; font-weight: 900; color: #4eb0e3;'>" + mapData.pathes[code].name + "</strong>" + "\n" + "<font style='font-weight: 900;'>" + mapData.pathes[code].teams + "</font>" + " Teams" + "\n" + "<font style='font-weight: 900;'>" + mapData.pathes[code].events + "</font>" + " Regionals"); //SETS TOOLTIP
+                    map.label.html("<strong style='font-size: 14px; font-weight: 900; color: #4eb0e3;'>"
+                    + mapData.pathes[code].name + "</strong>" + "\n" + "<font style='font-weight: 900;'>"
+                    + mapData.pathes[code].teams + "</font>" + " Team" + (mapData.pathes[code].teams == 1 ? "" : "s") + "\n"
+                    + "<font style='font-weight: 900;'>" + mapData.pathes[code].events + "</font>" + " Regional" + (mapData.pathes[code].events == 1 ? "" : "s")); //SETS TOOLTIP
                     jQuery(params.container).trigger(labelShowEvent, [map.label, code]);
 
                     if (!labelShowEvent.isDefaultPrevented()) {
