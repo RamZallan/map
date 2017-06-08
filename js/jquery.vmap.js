@@ -164,18 +164,26 @@
                     map.highlight(code, containerPath);
                 }
                 if (params.showTooltip) {
-                    map.label.html("<strong style='font-size: 14px; font-weight: 900; color: #4eb0e3;'>"
-                    + mapData.pathes[code].name + "</strong>" + "\n" + "<font style='font-weight: 900;'>"
-                    + mapData.pathes[code].teams + "</font>" + " Team" + (mapData.pathes[code].teams == 1 ? "" : "s") + "\n"
-                    + "<font style='font-weight: 900;'>" + mapData.pathes[code].events + "</font>" + " Regional" + (mapData.pathes[code].events == 1 ? "" : "s")); //SETS TOOLTIP
-                    jQuery(params.container).trigger(labelShowEvent, [map.label, code]);
-
-                    if (!labelShowEvent.isDefaultPrevented()) {
-                        map.label.show();
-                        map.labelWidth = map.label.width();
-                        map.labelHeight = map.label.height();
-                    }
-                }
+                  var teams;
+                  var events;
+                  $.ajax({
+                    url: "https://my.usfirst.org/myarea/index.lasso?page=searchresults&programs=FRC&reports=teams&sort_teams=number&results_size=250&omit_searchform=1&season_FRC=" + new Date().getFullYear() + "&area=" + code.toUpperCase() + "-USA",
+                    success: function (data) {
+                      console.log(data);
+                    },
+                    async: false
+                  });
+                  map.label.html("<strong style='font-size: 14px; font-weight: 900; color: #4eb0e3;'>"
+                  + mapData.pathes[code].name + "</strong>" + "\n" + "<font style='font-weight: 900;'>"
+                  + mapData.pathes[code].teams + "</font>" + " Team" + (mapData.pathes[code].teams == 1 ? "" : "s") + "\n"
+                  + "<font style='font-weight: 900;'>" + mapData.pathes[code].events + "</font>" + " Regional" + (mapData.pathes[code].events == 1 ? "" : "s")); //SETS TOOLTIP
+                  jQuery(params.container).trigger(labelShowEvent, [map.label, code]);
+                  if (!labelShowEvent.isDefaultPrevented()) {
+                      map.label.show();
+                      map.labelWidth = map.label.width();
+                      map.labelHeight = map.label.height();
+                  }
+              }
             } else {
                 map.unhighlight(code, containerPath);
 
