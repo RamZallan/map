@@ -36,20 +36,11 @@ h1 {
 }
 
 #legend {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
     width: 60%;
     text-align: center;
     margin: 0 auto;
     padding: 15px 5px;
     margin-bottom: 20px;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    &:hover {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-        transform: scale(1.02);
-    }
     & h2 {
         font-weight: 300;
         font-size: 24px;
